@@ -11,6 +11,15 @@
 - PHP 4.0 minimum
 --------
 
+### Commits :
+- add dashbord v0.1 at branch thomas-work 22/12/2020 (23:06)
+- vide
+- vide
+- vide
+- vide
+
+--------
+
 Ce projet est en cours de développement en version ALPHA (v0. 1) et donc incomplet, il pourrait éventuellement contenir des **bugs** voir des **erreurs**
 
  
