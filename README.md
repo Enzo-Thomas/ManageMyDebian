@@ -1,7 +1,5 @@
 ## ManageMyDebian - Node Server
--------
-blablabla ...
--------
+
 Requis :
 - nodejs
 - npm
