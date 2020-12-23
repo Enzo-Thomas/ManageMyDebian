@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="assets/css/connexion.css">
+
+        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+        <title>ManageMyDebian</title>
+    </head>
+    <body>
+        <!------ Include the above in your HEAD tag ---------->
+
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+
+                <!-- Icon - Banner -->
+                <div class="fadeIn first">
+                    <img src="assets/img/MMD2.png" id="icon" alt="User Icon" />
+                </div>
+                
+                <div id="alert"></div>
+                
+                <form id="register">
+                    <div class="form-group">
+                      <!-- <label for="mail">Email address</label> -->
+                      <input type="email" class="form-control" id="mail" required placeholder="user@exemple.com">
+                    </div>
+
+                    <div class="form-group">
+                      <!-- <label for="passwd">Password</label> -->
+                      <input type="password" class="form-control" id="passwd" required placeholder="password">
+                    </div>
+
+                    <!-- <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div> -->
+                    
+                    <!-- <button type="submit" class="btn btn-success modal-login-btn">Sign up</button> -->
+
+                    <input type="submit" value="Se connecter !" />
+                </form>
+
+                <div id="formFooter">
+                    <a class="underlineHover" href="#">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    </body>
+</html>
+<script>
+ 
+$(document).ready(function(){
+ 
+    // $("#submit").click(function(e){
+    $("#register").submit(function(e){
+        e.preventDefault();
+ 
+        $.post(
+            'connexion.php', // Un script PHP que l'on va créer juste après
+            {
+                username : $("#mail").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
+                password : $("#passwd").val()
+            },
+ 
+            function(data){
+
+                console.log("réponse PHP : " + data)
+
+                if(data == 'Success'){
+                     // Le membre est connecté. Ajoutons lui un message dans la page HTML.
+ 
+                     $("#alert").html('<div class="alert alert-success" role="alert">Vous avez été connecté avec succès !</div>');
+                }
+                else{
+                     // Le membre n'a pas été connecté. (data vaut ici "failed")
+ 
+                     $("#alert").html('<div class="alert alert-danger" role="alert">Mot de passe et/ou Adresse mail erroné</div>');
+                }
+            },
+            'text'
+        );
+        console.log("valeur de nos input que l'on fait passer à connexion.php :")
+        console.log($("#mail").val())
+        console.log($("#passwd").val())
+    });
+});
+ 
+</script>
